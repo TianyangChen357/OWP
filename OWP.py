@@ -4,6 +4,12 @@ import re
 import math
 import tqdm
 import time
+import sys
+
+resolution= sys.argv[1]
+resolution = int(resolution)  # Convert to integer
+GTI = sys.argv[2]
+GTI = float(GTI)  # Convert to integer
 def generate_montana_grid(res_km=5):
     # Approximate bounding box for Montana
     min_lat, max_lat = 44.2, 49.0
@@ -27,7 +33,7 @@ def generate_montana_grid(res_km=5):
 
     return grid_points
 # Input coordinates
-coordinates = list(generate_montana_grid(100))  # 100 km resolution
+coordinates = list(generate_montana_grid(resolution))  # 100 km resolution
 
 
 
@@ -49,7 +55,7 @@ with sync_playwright() as p:
 
     for lon, lat in coordinates:
         page = browser.new_page()
-        url = f"https://water.noaa.gov/precip-frequency/atlas15/pilot#@={lon},{lat},4.9&bm=topographic&ts=am&pt=depth&u=english&aep=50&ci=90&d=1d&future=gwl&prediction=gwl&period1=3&period2=1.5"
+        url = f"https://water.noaa.gov/precip-frequency/atlas15/pilot#@={lon},{lat},4.9&bm=topographic&ts=am&pt=depth&u=english&aep=50&ci=90&d=1d&future=gwl&prediction=gwl&period1=3&period2={GTI}"
         page.goto(url)
         print(f"Processing {lon}, {lat}")
         page.wait_for_timeout(1000)  # 1 second wait
@@ -91,5 +97,5 @@ end_time = time.time()-start_time
 print(f"Time taken: {end_time:.2f} seconds")
 # Save results
 df = pd.DataFrame(data)
-df.to_csv("precipitation_results_1d.csv", index=False)
-print("Saved to precipitation_results_1d.csv")
+df.to_csv(f"precipitation_results_1d_{GTI}C_{resolution}KM.csv", index=False)
+
