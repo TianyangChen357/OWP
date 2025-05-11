@@ -10,9 +10,9 @@ This example shows that resolution is 200KM and GTI is 5 degree C:
 •	python OWP.py 200 5
   
 Directory:
-•	OWP.py: the main script to automatically derive preciptation values for Montana with a user specified-resolution under user-specified configuration.
-•	generate_points.py: A script to generate coordinates in Montana
-•	precipitation_results_1d.csv: A demonstration of the output.
+1. OWP.py: the main script to automatically derive preciptation values for Montana with a user specified-resolution under user-specified configuration.
+2. generate_points.py: A script to generate coordinates in Montana
+3. precipitation_results_1d.csv: A demonstration of the output.
 
 Python Dependencies:
 1.	pandas
