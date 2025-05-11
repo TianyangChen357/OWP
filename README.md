@@ -3,11 +3,9 @@ This repository is to automate reteriving the data from NOAA Atlas 15 Pilot deve
 Link to NOAA Atalas 15 Pilot web app:
  https://water.noaa.gov/precip-frequency/atlas15/pilot 
 
-To run the code for demo, simply run OWP.py as follows:
-•	python OWP.py <resolution_for_grid_sampling> <GTI>
+To run the code for demo, simply run OWP.py as follows:	**python OWP.py <resolution_for_grid_sampling> <GTI>**
 
-This example shows that resolution is 200KM and GTI is 5 degree C:
-•	python OWP.py 200 5
+This example shows that resolution is 200KM and GTI is 5 degree C: **python OWP.py 200 5**
   
 Directory:
 1. OWP.py: the main script to automatically derive preciptation values for Montana with a user specified-resolution under user-specified configuration.
